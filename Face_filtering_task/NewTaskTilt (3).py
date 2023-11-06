@@ -36,7 +36,17 @@ Ppath = 'Prescreening\\'
 Rpath = 'Reponses\\'
 Spath= 'Stimulus\\'  # directory where images can be found
 Mpath= 'Mask\\'
-  
+
+
+# Gpath = 'C:\Thèse\ProjetHeadTilt'
+# datapath = 'data\\'                   # directory to save data in     
+# Cpath= 'Consignes\\'
+# Ppath = 'Prescreening\\'
+# Rpath = 'Reponses\\'
+# Spath= 'Stimulus\\'  # directory where images can be found
+# Mpath= 'Mask\\'
+
+   
 # Get subject's info through a dialog box
 exp_name = 'Face_Tilt_Task'
 exp_info = {
@@ -66,7 +76,7 @@ mon.setDistance(60)
 win = visual.Window(monitor = mon, # Open a window
                     color='grey',
                     units='deg',
-                    fullscr=True)
+                    fullscr=False)
 win.mouseVisible=False
 
 Ans1 = visual.ImageStim(win, size =[16, 2.68])  #add mask parameter it will be automatically faded
@@ -95,6 +105,12 @@ tm = 0.2
 t2 = 0.2
 trand = random.uniform(0.75,1.35) #I.T.I
 
+
+# trand = random.uniform(1.25, 1.75)
+# t1=0.7
+# t2=0.4
+# tm = 0.2
+
 sizeNoMod = [9, 10.4]
 
 timer = core.Clock()
@@ -103,6 +119,9 @@ timer = core.Clock()
 # Define variables
 #========================================
 
+
+# DictAnswer = AnswerscreenDict (os.path.join(Gpath, Ppath)) #function that makes a dictionnary, each entry for an image with the 5 possible answers names
+# Actorn = list(DictAnswer.keys())
 
 Actorn = [file for file in os.listdir(Ppath) if file.lower().endswith('.bmp')]
 
@@ -149,6 +168,9 @@ if exp_info['session'] == '1':
     win.flip(clearBuffer=True)
     core.wait(1)
     
+    
+    #Pretest-  I dont need that part it shows the subejct 4 pictures of the same identity, then if the subject can answer all of them correctly, it is taken as one of the stimulus
+
     foundIm = []
     
 
@@ -163,6 +185,11 @@ else:
         Final_Rand=pickle.load(pickle_file)
 
 
+# win = visual.Window(monitor = mon, # Open a window
+#                     color='grey',
+#                     units='deg',
+#                     fullscr=False)
+# win.mouseVisible=False
 Ans1 = visual.ImageStim(win, size =[16, 2.68]) 
 Ans2 = visual.ImageStim(win, size =[16, 2.68]) 
 Ans3 = visual.ImageStim(win, size =[16, 2.68]) 
@@ -171,11 +198,16 @@ Ans5 = visual.ImageStim(win, size =[16, 2.68])
 Ans6 = visual.ImageStim(win, size =[16, 2.68]) 
 Ans7 = visual.ImageStim(win, size =[16, 2.68]) 
 Ans8 = visual.ImageStim(win, size =[16, 2.68]) 
+# Ans9 = visual.ImageStim(win, size =[16, 2.68]) 
+# Ans10 = visual.ImageStim(win, size =[16, 2.68]) 
 StimMid = visual.ImageStim(win, size =[16, 2.68])
 StimCons = visual.ImageStim(win)
 StimIm = visual.ImageStim(win, size=[9, 10.4])
 StimText = visual.TextStim(win, colorSpace='rgb255')
+# fixation = visual.Circle(win=win, radius=0.15, units='deg', fillColor='black')
 fixation = visual.Circle(win=win, radius=0.15, units='deg',fillColor=[-0,-0,-0], lineColor='darkgrey')
+
+
 
 
 #afficher les 4 images, what's shown here the all 4 image recognised actors-( finalrand) ?
@@ -262,6 +294,9 @@ l2d = ['id7_im1','id4_im2','id6_im3','id3_im2','id5_im1','id1_im3','id6_im1','id
 
 #we can start from here I think already have the Fİnal_Rand ready. 
 
+#our_Final_Rand=['JustinTimberlake','BradPitt', 'DanielRadcliffe', 'RobertPattinson', 'LeonardoDiCaprio', 'RyanGosling', 'GeorgeClooney','DanielCraig']
+#Final_Rand =['JustinTimberlake', 'MattDamon', 'BenStiller','BradPitt', 'DanielRadcliffe', 'RobertPattinson', 'KeanuReeves', 'BenAffleck', 'LeonardoDiCaprio', 'RyanReynolds']
+  
 #selecting only the images for the 10 actors
 random.shuffle(Final_Rand)
 actstim=[]
@@ -295,14 +330,22 @@ nl2d = [newids.get(n, n) for n in l2d] #diff2
 ImRep = [] #selecting the 10 text images for the answer screen (with the names)
 for i in Final_Rand: 
     ImRep.append('Im_' + str(i) + '.png')
+#ImRep=['Im_JustinTimberlake.png', 'Im_MattDamon.png', 'Im_BenStiller.png','Im_BradPitt.png', 'Im_DanielRadcliffe.png', 'Im_RobertPattinson.png', 'Im_KeanuReeves.png', 'Im_BenAffleck.png', 'Im_LeonardoDiCaprio.png', 'Im_RyanReynolds.png']
 
 
 trials=[]
+# filters = ['fs','0','30','60','90','120','150']
+# filterrand = ['fs','0','30','60','90','120','150']
 filters = ['fs','0','90']
 filterrand = ['fs','0','90']
 listfs=[]
 list0=[]
+# list30=[]
+# list60=[]
 list90=[]
+# list120=[]
+# list150=[]
+# listoflists = [listfs, list0, list30, list60, list90, list120, list150]
 listoflists = [listfs, list0, list90]
 #making a dictionnary with each trial with the condition written
 for filter in filters:
@@ -414,6 +457,7 @@ scoretot = 0
 cond = 0
 l = 0
 names = ['imname1', 'imname2']
+# tilts = ['full', 'mid', 'up']
 tilts = ['upright', 'inversed']
 
 rank = 0
@@ -431,6 +475,7 @@ while current_triallist.index(i) < len(current_triallist):
         fixation.draw()
         win.flip()
         core.wait(trand) #I.T.I
+        #random.shuffle(names)
         win.flip(clearBuffer=False)
         StimIm.setImage(os.path.join(Gpath,Spath + i[names[0]]))
         StimIm.pos=(0, 0) #image displayed in the center
@@ -538,6 +583,7 @@ while current_triallist.index(i) < len(current_triallist):
         toSave = exp_info['participant'] + ',' + str(current_triallist.index(i)) + ',' + str(t) + ',' + str(i['filter']) + ',' + str(i[names[0]]) +'_'+ str(i[names[1]]) + ',' + str(ImRep) + ',' + str(rep) + ',' + str(r) + ',' + str(time) + ',' + str(score) + ',' + str(scoretot) +',\n'
         logfile.write(toSave)
         win.flip(clearBuffer=True)
+        #core.wait(0.5)
         with open(ntrial_fname, 'wb') as pickle_file:
             pickle.dump([ntrial], pickle_file)
         event.clearEvents()
