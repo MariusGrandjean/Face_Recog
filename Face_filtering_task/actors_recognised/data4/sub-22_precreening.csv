@@ -1,0 +1,8 @@
+subject,trial,celeb_id,celeb_name,celeb_image,celeb_position,rand0_name,rand0_pos,rand1_name,rand1_pos,rand2_name,rand2_pos,rand3_name,rand3_pos,answer_celeb,answer_position,correct,rt
+sub-22, trial29, 01, Ben Affleck, ID01_IM01.bmp, (0, -400), Robert Downey Jr, (300, 300), Daniel Radcliffe, (-550, -100), Ben Stiller, (550, -100), Hugh Jackman, (-300, 300), familiar face, [120. -79.], 1, 4.39004179998301
+sub-22, trial37, 04, Daniel Craig, ID04_IM02.bmp, (-550, -100), Ryan Reynolds, (550, -100), Hugh Jackman, (0, -400), Orlando Bloom, (-300, 300), Brad Pitt, (300, 300), familiar face, [ 62. -86.], 1, 7.628795600030571
+sub-22, trial48, 07, George Clooney, ID07_IM03.bmp, (550, -100), Matt Damon, (-550, -100), Keanu Reeves, (-300, 300), Justin Timberlake, (0, -400), Ben Affleck, (300, 300), George Clooney, [421. -89.], 1, 2.6414137000683695
+sub-22, trial5, 04, Daniel Craig, ID04_IM04.bmp, (300, 300), Daniel Radcliffe, (0, -400), Elijah Wood, (-300, 300), Orlando Bloom, (-550, -100), Hugh Jackman, (550, -100), familiar face, [  48. -101.], 1, 6.078746699960902
+sub-22, trial19, 05, Daniel Radcliffe, ID05_IM01.bmp, (550, -100), Ryan Gosling, (300, 300), Ben Stiller, (-300, 300), Leonardo DiCaprio, (0, -400), Robert Downey Jr, (-550, -100), familiar face, [  47. -101.], 1, 1.7015680000185966
+sub-22, trial25, 01, Ben Affleck, ID01_IM04.bmp, (0, -400), Daniel Radcliffe, (300, 300), Ryan Reynolds, (-300, 300), Robert Pattinson, (-550, -100), Leonardo DiCaprio, (550, -100), familiar face, [  47. -101.], 1, 1.6412413001526147
+sub-22, trial51, 16, Robert Pattinson, ID16_IM03.bmp, (-300, 300), Hugh Jackman, (0, -400), Patrick Dempsey, (300, 300), Orlando Bloom, (550, -100), Ben Stiller, (-550, -100), familiar face, [  47. -101.], 1, 3.1652015999425203
