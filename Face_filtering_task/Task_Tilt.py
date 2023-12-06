@@ -29,14 +29,13 @@ from RandomListFunction import AnswerscreenDict, DialogueActors, unlist, ActorsP
 #===========================================================
  
 
-Gpath = "C:/Users/kurnaz/Desktop/Face_filtering_task/"
-datapath = "data/"
-Cpath = "Consignes/"
-Ppath = "Prescreening/"
-Rpath = "Reponses/"
-Spath = "Stimulus/"
-Mpath = "Mask/"
-
+Gpath = 'C:\\Users\\kurnaz\\Desktop\\Face_filtering_task'
+datapath = 'data\\'                   # directory to save data in     
+Cpath= 'Consignes\\'
+Ppath = 'Prescreening\\'
+Rpath = 'Reponses\\'
+Spath= 'Stimulus\\'  # directory where images can be found
+Mpath= 'Mask\\'
   
 # Get subject's info through a dialog box
 exp_name = 'Face_Tilt_Task'
@@ -84,7 +83,7 @@ StimMid = visual.ImageStim(win, size =[16, 2.68])
 StimCons = visual.ImageStim(win)
 StimIm = visual.ImageStim(win, size=[9, 10.4])
 StimText = visual.TextStim(win, colorSpace='rgb255')
-fixation = visual.Circle(win=win,colorSpace="rgb255", radius=0.15, units='deg',fillColor=[225,225,225], lineColor='darkgrey')
+fixation = visual.Circle(win=win, radius=0.15, units='deg',fillColor=[-0,-0,-0], lineColor='darkgrey')
 
 
 mouse= event.Mouse(visible = False, win = win)
@@ -124,7 +123,7 @@ mask = os.listdir(os.path.join(Gpath, Mpath))
 actors_fname = exp_info['participant'] + '_' + 'actors' #define file name
 actors_fname = os.path.join(datapath, actors_fname)
 
-
+r = 0
 
 #=========================
 # Begining of prescreening
@@ -176,7 +175,7 @@ StimMid = visual.ImageStim(win, size =[16, 2.68])
 StimCons = visual.ImageStim(win)
 StimIm = visual.ImageStim(win, size=[9, 10.4])
 StimText = visual.TextStim(win, colorSpace='rgb255')
-fixation = visual.Circle(win=win,colorSpace="rgb255", radius=0.15, units='deg',fillColor=[225,225,225], lineColor='darkgrey')
+fixation = visual.Circle(win=win, radius=0.15, units='deg',fillColor=[-0,-0,-0], lineColor='darkgrey')
 
 
 #afficher les 4 images, what's shown here the all 4 image recognised actors-( finalrand) ?
@@ -414,14 +413,14 @@ score = 0
 scoretot = 0
 cond = 0
 l = 0
-# names = ['imname1', 'imname2']
-# tilts = ['upright', 'inversed']
+names = ['imname1', 'imname2']
+tilts = ['upright', 'inversed']
 
 rank = 0
 i = current_triallist[0]
 
 while current_triallist.index(i) < len(current_triallist): 
-    # t = tilts[cond]
+    t = tilts[cond]
     for e in range (rank, int(rank + 6)):
         if e>=len(current_triallist):
             win.close()
@@ -433,10 +432,10 @@ while current_triallist.index(i) < len(current_triallist):
         win.flip()
         core.wait(trand) #I.T.I
         win.flip(clearBuffer=False)
-        StimIm.setImage(os.path.join(Gpath,Spath + i['imname1']))
+        StimIm.setImage(os.path.join(Gpath,Spath + i[names[0]]))
         StimIm.pos=(0, 0) #image displayed in the center
         
-        if i['Cond'] == 'inverted':
+        if i['Cond'] == 'inversed':
             StimIm.ori = 180
         if i['Cond'] == 'upright':
             StimIm.ori = 0
@@ -449,10 +448,10 @@ while current_triallist.index(i) < len(current_triallist):
         StimCons.draw()
         win.flip() #show mask
         core.wait(tm)
-        StimIm.setImage(os.path.join(Gpath,Spath + i['imname2']))
+        StimIm.setImage(os.path.join(Gpath,Spath + i[names[1]]))
         StimIm.pos=(0, 0)
         
-        if i['Cond'] == 'inverted':
+        if i['Cond'] == 'inversed':
             StimIm.ori = 180
         if i['Cond'] == 'upright':
             StimIm.ori = 0
@@ -460,11 +459,11 @@ while current_triallist.index(i) < len(current_triallist):
         StimIm.draw()
         win.flip() #fliping the screen to show target image
         core.wait(t2) #present images for t2
-        fixation.fillColor = [225,225,225]
-        fixation.draw()
+        fixation.fillColor = 'black'
+        fixation.draw
         win.flip()
         event.clearEvents()
-        fixation.fillColor = [225,225,225]
+        fixation.fillColor = 'black'
         fixation.draw()
         event.clearEvents()
         Answer = False
@@ -475,10 +474,10 @@ while current_triallist.index(i) < len(current_triallist):
         while Answer == False:
             if CT.getTime() < 0:
                 break
-            fixation.fillColor = [225,225,225]
-            fixation.draw()
+            fixation.fillColor = 'black'
+            fixation.draw
             win.flip()
-            fixation.fillColor = [225,225,225]
+            fixation.fillColor = 'black'
             fixation.draw()
             win.flip()
             keys = event.getKeys(keyList=['s', 'l'])
@@ -492,8 +491,8 @@ while current_triallist.index(i) < len(current_triallist):
                     fixation.draw()
                     win.flip()
                     core.wait(0.2)
-                    fixation.fillColor =  [225,225,225]
-                    fixation.draw()             
+                    fixation.fillColor = 'white'
+                    fixation.draw   ()             
                     win.flip()
                     core.wait(1)
                     Answer = True
@@ -502,7 +501,7 @@ while current_triallist.index(i) < len(current_triallist):
                     fixation.fillColor = 'darkred'
                     fixation.draw()
                     win.flip()
-                    fixation.fillColor =  [225,225,225]
+                    fixation.fillColor = 'white'
                     fixation.draw()      
                     core.wait(0.2)
                     win.flip()
@@ -517,7 +516,7 @@ while current_triallist.index(i) < len(current_triallist):
                     fixation.draw()
                     win.flip()
                     core.wait(0.2)
-                    fixation.fillColor =  [225,225,225]
+                    fixation.fillColor = 'white'
                     fixation.draw()
                     win.flip()
                     core.wait(1)
@@ -528,7 +527,7 @@ while current_triallist.index(i) < len(current_triallist):
                     fixation.draw()
                     win.flip()
                     core.wait(0.2)
-                    fixation.fillColor =  [225,225,225]
+                    fixation.fillColor = 'white'
                     fixation.draw()
                     win.flip()
                     core.wait(1)
@@ -536,7 +535,7 @@ while current_triallist.index(i) < len(current_triallist):
             else:
                 rep = 'none'  
         timer.reset()
-        toSave = exp_info['participant'] + ',' + str(current_triallist.index(i)) + ',' + str(i['Cond']) + ',' + str(i['filter']) + ',' + str(i['imname1']) +'_'+ str(i['imname2']) + ',' + str(ImRep) + ',' + str(rep) + ',' + str(r) + ',' + str(time) + ',' + str(score) + ',' + str(scoretot) +',\n'
+        toSave = exp_info['participant'] + ',' + str(current_triallist.index(i)) + ',' + str(t) + ',' + str(i['filter']) + ',' + str(i[names[0]]) +'_'+ str(i[names[1]]) + ',' + str(ImRep) + ',' + str(rep) + ',' + str(r) + ',' + str(time) + ',' + str(score) + ',' + str(scoretot) +',\n'
         logfile.write(toSave)
         win.flip(clearBuffer=True)
         with open(ntrial_fname, 'wb') as pickle_file:
@@ -544,16 +543,13 @@ while current_triallist.index(i) < len(current_triallist):
         event.clearEvents()
         mouse.clickReset()
     cond += 1
-    if cond == 2 and l != 7: #every 3 small blocs a break
-         
-         cond = 0
-         l += 1
-         rank+=6
+    if cond == 2 and l != 6: #every 3 small blocs a break
+         rank+=14
          scoretot = score * 100 / 12 #there are 42 trials in one big bloc
-         # # if scoretot >= 75:
-         #     StimText.color = (128, 255, 128)
-         # else:
-         StimText.color =(1, 1, 1)
+         if scoretot >= 75:
+             StimText.color = (128, 255, 128)
+         else:
+             StimText.color = (147, 43, 33)
          StimText.text= 'votre score est de : ' + str(round(scoretot)) + '%\n Progression : ' + str((current_triallist.index(i)+1)/6) + '/' + str(len(current_triallist)/6) 
          StimText.draw()
          win.flip()
@@ -585,14 +581,16 @@ while current_triallist.index(i) < len(current_triallist):
              win.flip() #fliping the screen to show images
              core.wait(4)
              win.flip(clearBuffer=True)
-    
-    elif cond == 2 and l == 7: #because we will have the long break
+         cond = 0
+         l += 1
+         random.shuffle(tilts)
+    elif cond == 2 and l == 6: #because we will have the long break
          l += 1
          scoretot = score * 100 / 12 #there are 42 trials in one big bloc
-         # if scoretot >= 75:
-         #     StimText.color = (128, 255, 128)
-         # else:
-         StimText.color =(1, 1, 1)  
+         if scoretot >= 75:
+             StimText.color = (128, 255, 128)
+         else:
+             StimText.color = (147, 43, 33)
          StimText.text= 'votre score est de : ' + str(round(scoretot)) + '%\n Progression : ' + str((current_triallist.index(i)+1)/6) + '/' + str(len(current_triallist)/6)  
          StimText.draw()
          win.flip()
@@ -628,21 +626,16 @@ while current_triallist.index(i) < len(current_triallist):
          event.clearEvents()
          keys = event.waitKeys(keyList=['space', 'escape', 'q'])
          if 'escape' in keys:
-             ntrial = current_triallist.index(i)
-             with open(ntrial_fname, 'wb') as pickle_file:
-                 pickle.dump([ntrial], pickle_file)  
-             print('pickled at' + str(ntrial))
+             break
              win.close()
-             logfile.close()
              core.quit()
          elif 'q' in keys:
              ntrial = current_triallist.index(i)
              with open(ntrial_fname, 'wb') as pickle_file:
-                 pickle.dump([ntrial], pickle_file)  
+                 pickle.dump([ntrial], pickle_file)
              print('pickled at' + str(ntrial))
-             #break
+             break
              win.close()
-             logfile.close()
              core.quit()
              #break
          elif 'space' in keys :
@@ -652,13 +645,13 @@ while current_triallist.index(i) < len(current_triallist):
              win.flip(clearBuffer=True)
          l = 0
          cond = 0
-         rank+=6
-    
+         rank+=14
+         random.shuffle(tilts)
     else: #between small blocs
          core.wait(2.5)
          Bip = sound.Sound('C', secs=0.2)
          Bip.play()
-         rank += 6
+         rank += 14
          core.wait(.5)
 win.close()        
 logfile.close()
