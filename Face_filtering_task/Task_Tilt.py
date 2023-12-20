@@ -262,7 +262,7 @@ l2d = ['id7_im1','id4_im2','id6_im3','id3_im2','id5_im1','id1_im3','id6_im1','id
 
 #we can start from here I think already have the Fİnal_Rand ready. 
 
-#selecting only the images for the 10 actors
+#selecting only the images for the 8 actors
 random.shuffle(Final_Rand)
 actstim=[]
 for n in Final_Rand:
@@ -618,10 +618,10 @@ while current_triallist.index(i) < len(current_triallist):
                  break
                  win.close()
                  core.quit()
-         cons_imname=os.path.join(Gpath, Cpath + 'Diapositive17.bmp')
-         StimCons.setImage(cons_imname)
-         StimCons.pos=(0, 0)
-         StimCons.draw()
+         #cons_imname=os.path.join(Gpath, Cpath + 'Diapositive17.bmp')
+         #StimCons.setImage(cons_imname)
+         #StimCons.pos=(0, 0)
+         #StimCons.draw()
          win.flip() #fliping the screen to show images
          event.clearEvents()
          keys = event.waitKeys(keyList=['space', 'escape', 'q'])
