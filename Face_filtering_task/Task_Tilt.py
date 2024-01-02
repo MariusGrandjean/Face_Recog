@@ -23,7 +23,6 @@ import re
 import copy
 from RandomListFunction import AnswerscreenDict, DialogueActors, unlist, ActorsPos
 
-
 #===========================================================
 # Store info about the experiment session and set parameters
 #===========================================================
