@@ -28,14 +28,14 @@ from RandomListFunction import AnswerscreenDict, DialogueActors, unlist, ActorsP
 #===========================================================
  
 
-Gpath = 'C:\\Users\\kurnaz\\Desktop\\Face_filtering_task'
-datapath = 'data\\'                   # directory to save data in     
-Cpath= 'Consignes\\'
-Ppath = 'Prescreening\\'
-Rpath = 'Reponses\\'
-Spath= 'Stimulus\\'  # directory where images can be found
-Mpath= 'Mask\\'
-  
+Gpath = 'C:\\Users\\grandjeamari\\Documents\\Travail\\UCLouvain\\PhD\\Projet\\Projet-Saccades\\Tasks\\Face_recognition\\Face_filtering_task'
+datapath = 'data\\'        # directory to save data in     
+Cpath =  'Consignes\\'
+Ppath =  'Prescreening_2\\'
+Rpath =  'Reponses\\'
+Spath =  'Stimulus_2\\'  # directory where images can be found
+Mpath =  'Mask_2\\'
+
 # Get subject's info through a dialog box
 exp_name = 'Face_Tilt_Task'
 exp_info = {
@@ -63,7 +63,7 @@ mon.setSizePix((1920, 1200))
 mon.setWidth(49)
 mon.setDistance(60)
 win = visual.Window(monitor = mon, # Open a window
-                    color='grey',
+                    color=[-.095, -.095, -.095],
                     units='deg',
                     fullscr=True)
 win.mouseVisible=False
@@ -87,7 +87,7 @@ fixation = visual.Circle(win=win, radius=0.15, units='deg',fillColor=[-0,-0,-0],
 
 mouse= event.Mouse(visible = False, win = win)
 logfile = open(data_fname, 'w')
-logfile.write('Sujet,Trial,Condition,Filter,Imname,Actor0,Actor1,Actor2,Actor3,Actor4,Actor5,Actor6,Actor7,Actor8,Actor9,Answer,Accu,RT,Score,Scoreperc, \n')
+logfile.write('Sujet,Trial,Condition,Filter,Imname,Actor0,Actor1,Actor2,Actor3,Actor4,Actor5,Actor6,Actor7,Actor8,Actor9,Accu,RT,Score,Scoreperc \n')
 
 t1 = 0.2
 tm = 0.2
@@ -112,7 +112,7 @@ ActorsRank = ['1', '2', '3', '4', '5', '6', '7', '8']
 List_Rand = random.sample(Actorn, len(Actorn))
 List_pos = [(0, -7),(-12, -4), (12, -4), (-8, 5), (8, 5)]
 
-ins = ['Diapositive1.bmp', 'Diapositive2.bmp', 'Diapositive3.bmp', 'Diapositive4.bmp', 
+ins = ['Diapositive1.bmp', 'Diapositive2.bmp', 'Diapositive4.bmp', 
        'Diapositive5.bmp', 'Diapositive6.bmp', 'Diapositive7.bmp', 'Diapositive8.bmp', 
        'Diapositive9.bmp', 'Diapositive10.bmp', 'Diapositive11.bmp', 'Diapositive12.bmp', 
        'Diapositive13.bmp', 'Diapositive14.bmp', 'Diapositive15.bmp', 'Diapositive16.bmp', 'Diapositive17.bmp']                # instructions
@@ -332,7 +332,7 @@ listoflists = unlist(listoflists)
 conditions=['upright','inverted']
 
 
-for a in range (24): #because there are 30 trials per condition (the condition filter-150-different count 30 trials) so 60 for each filter
+for a in range (24): #because there are 8 persons that have 3 pictures each
     random.shuffle(conditions)
     for x in conditions:
         random.shuffle(filterrand)  #different order of the filters in each block
@@ -549,7 +549,7 @@ while current_triallist.index(i) < len(current_triallist):
              StimText.color = (128, 255, 128)
          else:
              StimText.color = (147, 43, 33)
-         StimText.text= 'votre score est de : ' + str(round(scoretot)) + '%\n Progression : ' + str((current_triallist.index(i)+1)/6) + '/' + str(len(current_triallist)/6) 
+         StimText.text= 'votre score est de : ' + str(round(scoretot,2)) + '%\n Progression : ' + str(round((current_triallist.index(i) + 1) / 6, 2))  + '/' + str(len(current_triallist)/6) 
          StimText.draw()
          win.flip()
          core.wait(5)
@@ -590,7 +590,7 @@ while current_triallist.index(i) < len(current_triallist):
              StimText.color = (128, 255, 128)
          else:
              StimText.color = (147, 43, 33)
-         StimText.text= 'votre score est de : ' + str(round(scoretot)) + '%\n Progression : ' + str((current_triallist.index(i)+1)/6) + '/' + str(len(current_triallist)/6)  
+         StimText.text= 'votre score est de : ' + str(round(scoretot)) + '%\n Progression : ' + str(round((current_triallist.index(i)+1)/6),2) + '/' + str(len(current_triallist)/6)  
          StimText.draw()
          win.flip()
          core.wait(5)
