@@ -87,7 +87,7 @@ fixation = visual.Circle(win=win, radius=0.15, units='deg',fillColor=[-0,-0,-0],
 
 mouse= event.Mouse(visible = False, win = win)
 logfile = open(data_fname, 'w')
-logfile.write('Sujet,Trial,Condition,Filter,Imname,Actor0,Actor1,Actor2,Actor3,Actor4,Actor5,Actor6,Actor7,Actor8,Actor9,Accu,RT,Score,Scoreperc \n')
+logfile.write('Sujet,Trial,Condition,Filter,Imname,Actor0,Actor1,Actor2,Actor3,Actor4,Actor5,Actor6,Actor7,Accu,RT,Score,Scoreperc \n')
 
 t1 = 0.2
 tm = 0.2
