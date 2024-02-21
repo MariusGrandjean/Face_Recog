@@ -539,10 +539,11 @@ while current_triallist.index(i) < len(current_triallist):
         with open(ntrial_fname, 'wb') as pickle_file:
             pickle.dump([ntrial], pickle_file)
         event.clearEvents()
+        mouse.clickReset()
     cond += 1
     if cond == 2 and l != 6: #every 2 blocs a break
          rank+=14
-         scoretot = score * 100 / 12 #there are 48 trials in one bloc
+         scoretot = score * 100 / 12 #there are 48 trials in one big bloc
          if scoretot >= 75:
              StimText.color = (128, 255, 128)
          else:
