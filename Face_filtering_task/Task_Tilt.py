@@ -28,7 +28,7 @@ from RandomListFunction import AnswerscreenDict, DialogueActors, unlist, ActorsP
 #===========================================================
  
 
-Gpath = 'C:\\Users\\grandjeamari\\Documents\\Travail\\UCLouvain\\PhD\\Projet\\Projet-Saccades\\Tasks\\Face_recognition\\Face_filtering_task'
+Gpath = 'C:\\Users\\grandjeamari\\Documents\\Travail\\UCLouvain\\PhD\\Projet\\Projet-Saccades\\Tasks'
 datapath = 'data\\'        # directory to save data in     
 Cpath =  'Consignes\\'
 Ppath =  'Prescreening_2\\'
@@ -350,7 +350,6 @@ for a in range (24): #because there are 8 persons that have 3 pictures each
             triallist.append(dic) #need to add 2 per filter and to not put the same twice start at 0 and then 30
     a = 0
 
-
 ntrial = 0
 
 trials_fname = exp_info['participant'] + '_' + 'trials' #define file name
@@ -468,7 +467,7 @@ while current_triallist.index(i) < len(current_triallist):
         Answer = False
         win.flip() #fliping the screen to show images
         timer.reset()
-        core.wait(t2) #present images for 300ms
+        core.wait(t2) #present images for 200ms
         CT = core.CountdownTimer(3)
         while Answer == False:
             if CT.getTime() < 0:
@@ -540,11 +539,10 @@ while current_triallist.index(i) < len(current_triallist):
         with open(ntrial_fname, 'wb') as pickle_file:
             pickle.dump([ntrial], pickle_file)
         event.clearEvents()
-        mouse.clickReset()
     cond += 1
-    if cond == 2 and l != 6: #every 3 small blocs a break
+    if cond == 2 and l != 6: #every 2 blocs a break
          rank+=14
-         scoretot = score * 100 / 12 #there are 42 trials in one big bloc
+         scoretot = score * 100 / 12 #there are 48 trials in one bloc
          if scoretot >= 75:
              StimText.color = (128, 255, 128)
          else:
@@ -585,7 +583,7 @@ while current_triallist.index(i) < len(current_triallist):
          random.shuffle(tilts)
     elif cond == 2 and l == 6: #because we will have the long break
          l += 1
-         scoretot = score * 100 / 12 #there are 42 trials in one big bloc
+         scoretot = score * 100 / 12 #there are 48 trials in one bloc
          if scoretot >= 75:
              StimText.color = (128, 255, 128)
          else:
@@ -617,10 +615,6 @@ while current_triallist.index(i) < len(current_triallist):
                  break
                  win.close()
                  core.quit()
-         #cons_imname=os.path.join(Gpath, Cpath + 'Diapositive17.bmp')
-         #StimCons.setImage(cons_imname)
-         #StimCons.pos=(0, 0)
-         #StimCons.draw()
          win.flip() #fliping the screen to show images
          event.clearEvents()
          keys = event.waitKeys(keyList=['space', 'escape', 'q'])
