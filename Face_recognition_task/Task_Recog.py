@@ -62,8 +62,8 @@ data_fname = os.path.join(datapath, data_fname)
 
 mon = monitors.Monitor('mon1') #set the window
 mon.setSizePix((1920, 1200))
-mon.setWidth(49)
-mon.setDistance(60)
+mon.setWidth(120)
+mon.setDistance(90)
 win = visual.Window(monitor = mon, # Open a window
                     color=[-.095, -.095, -.095],
                     units='deg',
@@ -550,10 +550,11 @@ while current_triallist.index(i) < len(current_triallist):
          l += 1
          rank+=6
          scoretot = score * 100 / 12 #there are 42 trials in one big bloc
-         # # if scoretot >= 75:
-         #     StimText.color = (128, 255, 128)
-         # else:
-         StimText.color =(1, 1, 1)
+         if scoretot >= 75:
+             StimText.color = ("green")
+         else:
+             StimText.color = ("red")
+         #StimText.color =(1, 1, 1)
          StimText.text= 'votre score est de : ' + str(round(scoretot)) + '%\n Progression : ' + str((current_triallist.index(i)+1)/6) + '/' + str(len(current_triallist)/6) 
          StimText.draw()
          win.flip()
@@ -589,10 +590,11 @@ while current_triallist.index(i) < len(current_triallist):
     elif cond == 2 and l == 7: #because we will have the long break
          l += 1
          scoretot = score * 100 / 12 #there are 42 trials in one big bloc
-         # if scoretot >= 75:
-         #     StimText.color = (128, 255, 128)
-         # else:
-         StimText.color =(1, 1, 1)  
+         if scoretot >= 75:
+             StimText.color = ("green")
+         else:
+             StimText.color = ("red")
+         #StimText.color =(1, 1, 1)
          StimText.text= 'votre score est de : ' + str(round(scoretot)) + '%\n Progression : ' + str((current_triallist.index(i)+1)/6) + '/' + str(len(current_triallist)/6)  
          StimText.draw()
          win.flip()
