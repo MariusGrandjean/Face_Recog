@@ -65,7 +65,7 @@ mon.setSizePix((1920, 1200))
 mon.setWidth(120)
 mon.setDistance(90)
 win = visual.Window(monitor = mon, # Open a window
-                    color=[-.095, -.095, -.095],
+                    color=[-.1, -.1, -.1],
                     units='deg',
                     fullscr=True)
 win.mouseVisible=False
